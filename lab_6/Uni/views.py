@@ -1,7 +1,11 @@
 from django.shortcuts import render
-
-def index(request):
-    pass
+from .models import students, courses
 
 def students(request):
+    pass
+
+def Courses(request):
+    pass
+
+def Details(request):
     pass

@@ -3,7 +3,7 @@ from django.core.validators import RegexValidator
 
 class students(models.Model):
     name = models.CharField(max_length=10)
-    email = models.CharField()
+    email = models.CharField(max_length=64)
     phone_number = models.CharField(
         max_length=10,
         validators=[
@@ -24,6 +24,13 @@ class students(models.Model):
             )
         ]
     )
+    courses = models.ManyToManyField('courses', blank=True, related_name="students") 
 
     def __str__(self):
-        return f"{self.name},{self.email},{self.student_id},{self.phone_number}"
+        return f"{self.name},{self.email},{self.student_id},{self.phone_number},{self.courses}"
+
+class courses(models.Model):
+    coursesid = models.CharField(max_length=5)
+
+    def __str__(self):
+        return f"{self.coursesid}"
