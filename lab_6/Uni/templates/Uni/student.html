@@ -15,5 +15,15 @@
             <li>No applied coureses</li>
         {% endfor %}
     </ul>
+    <h2>Add Course</h2>
+    <form action="{% url 'add_course' course.id %}" method="post">
+        {% csrf_token %}
+        <select name="course" id="">
+            {% for course in Noncourses %}
+                <option value="{{course.id}}">{{ course }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
     <a href="{% url 'index' %}">All Students</a>
 {% endblock %}

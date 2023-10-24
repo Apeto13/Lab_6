@@ -1,0 +1,10 @@
+{% extends "Uni/layout.html" %}
+{% block body %}
+    <h1>Courses: </h1>
+    <ul>
+        {% for course in courses %}
+            <li>{{course.coursesid}} {{course.courseDes}}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'index' %}">All Students</a>
+{% endblock %}

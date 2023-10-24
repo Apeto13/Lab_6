@@ -31,6 +31,7 @@ class students(models.Model):
 
 class courses(models.Model):
     coursesid = models.CharField(max_length=5)
+    courseDes = models.CharField(max_length=64, blank=True)
 
     def __str__(self):
-        return f"{self.coursesid}"
+        return f"{self.coursesid},{self.courseDes}"
