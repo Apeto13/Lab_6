@@ -1,0 +1,10 @@
+{% extends "Uni/layout.html" %}
+{% block body %}
+    <h1>Students:</h1>
+    <ul>
+        {% for student in students %}
+            <li><a href="{% url 'student' student.id %}">Student Number-> {{ student.id }}</a> name: {{ student.name }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

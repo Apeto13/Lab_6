@@ -14,20 +14,20 @@ class students(models.Model):
             )
         ]
     )
-    student_id = models.CharField(
+    student_ID = models.CharField(
         max_length=10,
         validators=[
             RegexValidator(
                 regex=r'^\d{10}$',
                 message='Student ID must be exactly 10 digits',
-                code='invalid_student_id'
+                code='invalid_student_ID'
             )
         ]
     )
     courses = models.ManyToManyField('courses', blank=True, related_name="students") 
 
     def __str__(self):
-        return f"{self.name},{self.email},{self.student_id},{self.phone_number},{self.courses}"
+        return f"{self.name},{self.email},{self.student_ID},{self.phone_number},{self.courses}"
 
 class courses(models.Model):
     coursesid = models.CharField(max_length=5)

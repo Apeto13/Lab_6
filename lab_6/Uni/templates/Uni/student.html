@@ -1,0 +1,19 @@
+{% extends "Uni/layout.html" %}
+{% block body %}
+    <h1>Student: {{student.id}}</h1>
+    <ul>
+        <li>Name: {{student.name}}</li>
+        <li>Email: {{student.email}}</li>
+        <li>Phone Number: {{student.phone_number}}</li>
+        <li>Student ID: {{student.student_ID}}</li>
+    </ul>
+    <h2>courses: </h2>
+    <ul>
+        {% for course in courses %}
+            <li>{{ course }}</li>
+        {% empty %}
+            <li>No applied coureses</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'index' %}">All Students</a>
+{% endblock %}
