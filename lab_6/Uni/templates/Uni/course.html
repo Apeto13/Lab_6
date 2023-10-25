@@ -6,5 +6,16 @@
             <li>{{course.coursesid}} {{course.courseDes}}</li>
         {% endfor %}
     </ul>
+    <h2>Create Course:</h2>
+    <form action="{% url 'create_course' %}" method="post">
+        {% csrf_token %}
+        <label for="coursesid">Course_ID</label>
+        <input name="coursesid">
+        <label for="courseDes">Course Description</label>
+        <input name="courseDes">
+        <input type="submit">
+    </form>
+    <p style="color: grey; font-size: smaller;">NOTE: in the Course_ID you can NOT add a course with more then 5 letters!</p>
+
     <a href="{% url 'index' %}">All Students</a>
 {% endblock %}

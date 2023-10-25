@@ -25,19 +25,33 @@ def course(request):
         "courses": All_courses
     })
 
-def add_course(request, course_id):
+def add_course(request, student_id):
     if request.method == "POST":
-        course = courses.objects.get(pk=course_id)
-        student_id = int(request.POST["student"])
         student = students.objects.get(pk=student_id)
-        student.courses.add(student)
-        return HttpResponseRedirect(reverse("course",args=(course.id,)))
-        
-
+        course_id = int(request.POST["course"])
+        course = courses.objects.get(pk=course_id)
+        student.courses.add(course)
+        return HttpResponseRedirect(reverse("student",args=(student.id,)))
     
 
-#def details(request):
-#    student = students.object.get(id=students_id)
-#    return render(request, "Uni/details.html",{
-#        "student": student
-#    })
+def create_course(request):
+    if request.method == "POST":
+        courseName = request.POST.get("coursesid","")
+        course_Des = request.POST.get("courseDes","")
+        new_course = courses(coursesid=courseName,courseDes=course_Des)
+        new_course.save()
+        return HttpResponseRedirect(reverse("course"))
+
+def view_student(request):
+    return render(request,"Uni/index.html",)
+
+def create_student(request):
+    if request.method =="POST":
+        name = request.POST.get("name","")
+        email = request.POST.get("email","")
+        phone_num = request.POST.get("phone_number","")
+        id = request.POST.get("student_ID","")
+        new_student = students(name=name,email=email,phone_number=phone_num,student_ID=id)
+        new_student.save()
+        return HttpResponseRedirect(reverse('index'))
+        # HttpResponseRedirect(reverse("signin:index"))

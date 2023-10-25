@@ -6,5 +6,18 @@
             <li><a href="{% url 'student' student.id %}">Student Number-> {{ student.id }}</a> name: {{ student.name }}</li>
         {% endfor %}
     </ul>
+    <h2>Add Student: </h2>
+    <form action="{% url 'create_student' %}" method="post">
+        {% csrf_token %}
+        <label for="name">Name: </label>
+        <input name="name">
+        <label for="email">Email: </label>
+        <input name="email">
+        <label for="phone_number">Phone Number: </label>
+        <input name="phone_number">
+        <label for="student_ID">Student ID: </label>
+        <input name="student_ID">
+        <input type="submit">
+    </form>
     <a href="{% url 'course' %}">Available Courses</a>
 {% endblock %}
